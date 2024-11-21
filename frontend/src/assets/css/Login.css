@@ -1,0 +1,51 @@
+body{
+    box-sizing:none;
+    margin:0px;
+    padding: 0px;
+    overflow-x:hidden;
+    font-family :"Roboto", sans-serif;
+}
+
+.mainimag{
+    height: 1024px;
+    width: 845px;
+    position: absolute; 
+ 
+
+}
+
+.logintext{
+    position: absolute;
+    left: 1000px;
+    top: 200px;
+}
+.logintext1{
+    position: absolute;
+    left: 1001px;
+    top: 260px;
+   color: #A4A1AA;
+}
+.logindivinput{
+    position: absolute;
+    left: 1000px;
+    top: 300px;
+    height: 176px;
+    width: 445px;
+
+}
+.button{
+    height: 35px;
+    width: 300px;
+    border-radius: 4px;
+    stroke: 131118;
+    color: 131118;
+}
+.LoginButton{
+    position: relative;
+    bottom:45px;
+    background-color: black;
+    color: white;
+    height: 56px;
+    width:320px ;
+    border-radius: 40px;
+}
