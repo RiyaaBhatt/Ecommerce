@@ -18,6 +18,7 @@ body{
     position: absolute;
     left: 1000px;
     top: 200px;
+    
 }
 .logintext1{
     position: absolute;
@@ -31,15 +32,17 @@ body{
     top: 300px;
     height: 176px;
     width: 445px;
+    color:#131118;
 
 }
-.button{
-    height: 35px;
-    width: 300px;
-    border-radius: 4px;
-    stroke: 131118;
-    color: 131118;
+.button {
+    height: 35px !important;
+    width: 300px !important;
+    border-radius: 4px !important;
+    stroke: #131118 !important;
+    color: #131118 !important;
 }
+
 .LoginButton{
     position: relative;
     bottom:45px;
@@ -48,4 +51,5 @@ body{
     height: 56px;
     width:320px ;
     border-radius: 40px;
+    
 }

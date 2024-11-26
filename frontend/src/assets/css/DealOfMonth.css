@@ -1,0 +1,11 @@
+.image-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .animated-image {
+    position: absolute;
+    transition: transform 0.7s ease-in-out;
+  }

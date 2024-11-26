@@ -3,7 +3,7 @@ const mysql=require("mysql2")
                     host: "localhost",
                     user: "root",
                     password: "1410",
-                    database:"vrinsoft",
+                    database:"ecommerce",
                 });
                 db.connect((err) => {
                     if (err) {
