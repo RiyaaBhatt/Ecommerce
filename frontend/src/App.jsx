@@ -5,10 +5,24 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import PrivateRoute from './PrivateRoutes'
 import AdminSidebar from './pages/AdminSidebar'
+import { Navigate } from 'react-router-dom'
+import DashboardA from './components/DashboardA'
+import User from './components/User'
+import Orders from './pages/Orders'
+import Products from './components/Products'
+import NotFound from './components/NotFound'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+const queryClient = new QueryClient()
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("AccessToken"));
-
+  const role=localStorage.getItem("role")
   useEffect(() => {
     
     const handleStorageChange = () => {
@@ -22,20 +36,47 @@ function App() {
   }, []);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
 <Router>
   <Routes>
-    <Route path='/' element={token?(<Home/>):(<Login/>)}/>
-    <Route path='/admin' element={token?(<AdminSidebar/>):(<Login/>)}/>
+    {/* <Route path='/' element={token?((role=="user")?(<Home/>):(<AdminSidebar/>)):(<Login/>)}/> */}
+
+<Route 
+  path="/" 
+  element={
+    token 
+      ? (role === "user" 
+          ? <Home /> 
+          : <AdminSidebar />) 
+      :<Login/>
+  }
+/>
+
+    <Route path='/admin/user' element={(token&&role=="admin")?(<User/>):(<Login/>)}/>
     <Route path='/home' element={
-      <PrivateRoute>
-      <Home/></PrivateRoute>
+     (role=="user")?
+     (<PrivateRoute>
+        <Home/></PrivateRoute>):<PrivateRoute>
+        <AdminSidebar/>
+        </PrivateRoute>
     }/>
-    <Route path='/signup' element={token?(<Home/>):(<Signup/>)}></Route>
+    <Route path='/signup' element={
+    token 
+      ? (role === "user" 
+          ? <Home /> 
+          : <AdminSidebar />) 
+      :<Signup/>
+  }></Route>
+              
+<Route path='/admin/dashboard' element={<DashboardA/>}/>
+<Route path='/admin/orders' element={<Orders/>}/>
+<Route path='/admin/product' element={<Products/>}/>
+<Route path='*' element={<NotFound/>}></Route>
   </Routes>
 </Router>
-    </>
+    </QueryClientProvider>
   )
 }
 
 export default App
+

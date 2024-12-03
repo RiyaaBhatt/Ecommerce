@@ -27,7 +27,8 @@ const Signup=async(req,res)=>{
         console.log("hiii");
         console.log("username",req.body);
         
-        const {username,password,email,phone_number}=req.body
+        const {username,password,email,phone_number,role}=req.body
+        console.log(role);
         
         console.log(password)
         if(!username || !password || !email || !password){
@@ -54,7 +55,7 @@ console.log(username);
     console.log(hassedpassword)
     console.log(phone_number,"phonr no i am");
     
-    const result=await db.promise().query("insert into users (username,password,email,phone_number,role) values (?,?,?,?,?)",[username,hassedpassword,email,phone_number,'user'])
+    const result=await db.promise().query("insert into users (username,password,email,phone_number,role) values (?,?,?,?,?)",[username,hassedpassword,email,phone_number,role?role:'user'])
     const user={"username":username,"password":hassedpassword,email:email,phone_number:phone_number}
     const AccessToken=jwt.sign(user,"Asfdhugef hausdwh")
     console.log(AccessToken)
@@ -110,11 +111,12 @@ const cookies=async(req,res)=>{
     
     res.send({token:"dsf/ asdfk amsdkf askdf kasd fja df sadf asdf asd"})
 }
+
 const role=async(req,res)=>{
     const username=req.params
     console.log(username);
     try{
-    const [rows] = await db.promise().query("select * from users where username = ?",[username.username])
+    const [rows] = await db.promise().query("select role from users where username = ?",[username.username])
     console.log(rows);
     res.send(rows)
     }
@@ -125,4 +127,27 @@ const role=async(req,res)=>{
     
 
 }
-module.exports={AuthController,Signup,Login,cookies,role}
+const getAllUser=async(req,res)=>{
+    try{
+        const [rows]=await db.promise().query("select u.userId,u.username,u.email,u.phone_number,u.role,count(o.userId) as orderCount from users u  left join orders o on u.userId=o.userId group by u.userId")
+        
+        
+        res.send(rows)
+    }
+    catch(err){
+        console.log(err);
+        
+    }
+}
+const getUserById=async(req,res)=>{
+    try{
+        const userId=req.params
+        const [rows]=await db.promise().query("select u.userId,u.username,u.email,u.phone_number,u.role,count(o.userId) as orderCount from users u  left join orders o on u.userId=o.userId where u.userId=?",[u.userId])
+        res.send(rows)
+    }
+    catch(err){
+        res.send(err)
+    }
+}
+
+module.exports={AuthController,Signup,Login,cookies,role,getAllUser,getUserById}

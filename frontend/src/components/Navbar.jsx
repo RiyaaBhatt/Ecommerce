@@ -6,15 +6,19 @@ import { Link } from "react-router-dom";
  import Cookies from 'js-cookie';
  import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { deleteuser } from "../app/reducers/UserSlice";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
     const handleLogout = () => {
     localStorage.removeItem("AccessToken");
     console.log("token removed");
+      dispatch(deleteuser())
     window.dispatchEvent(new Event("storage")); 
     navigate("/");
   };
