@@ -8,16 +8,19 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { deleteuser } from "../app/reducers/UserSlice";
+import { useAlert } from "react-alert";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate=useNavigate()
   const dispatch=useDispatch()
+  const alert=useAlert()
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
     const handleLogout = () => {
     localStorage.removeItem("AccessToken");
     console.log("token removed");
+    alert.show("logout success")
       dispatch(deleteuser())
     window.dispatchEvent(new Event("storage")); 
     navigate("/");
@@ -98,12 +101,10 @@ const Navbar = () => {
         >
           <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             {[
-              { name: "Home", to: "/", active: true },
-              { name: "Company", to: "/" },
-              { name: "Marketplace", to: "/" },
-              { name: "Features", to: "/" },
-              { name: "Team", to: "/" },
-              { name: "Contact", to: "/" },
+              { name: "Home", to: "/"},
+              { name: "Product", to: "/viewallproduct" },
+           
+              { name: "Cart", to: "/cart" },
             ].map((link, index) => (
               <li key={index}>
                 <Link

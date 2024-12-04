@@ -5,6 +5,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { userSlice } from "./reducers/UserSlice";
 import { adminDataSlice } from "./reducers/AdminDataSlice";
 import { OrderDataSlice } from "./reducers/OrderDataSlice";
+import { AllUserOrderSlice } from "./reducers/AllUserOrderSlice";
 const persistConfig = {
     key: "root",
     storage,
@@ -12,7 +13,8 @@ const persistConfig = {
   const rootReducer = combineReducers({
     user:userSlice.reducer,
     admin:adminDataSlice.reducer,
-    order:OrderDataSlice.reducer
+    order:OrderDataSlice.reducer,
+    AllUser:AllUserOrderSlice.reducer
     });
     
 const persistedReducer = persistReducer(persistConfig,rootReducer);

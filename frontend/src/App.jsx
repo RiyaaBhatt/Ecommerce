@@ -18,6 +18,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Product from './pages/Product'
+import Cart from './pages/Cart'
 const queryClient = new QueryClient()
 
 function App() {
@@ -67,11 +69,14 @@ function App() {
           : <AdminSidebar />) 
       :<Signup/>
   }></Route>
-              
+     <Route path='/viewallproduct' element={<Product/>}/>
+         
 <Route path='/admin/dashboard' element={<DashboardA/>}/>
 <Route path='/admin/orders' element={<Orders/>}/>
 <Route path='/admin/product' element={<Products/>}/>
 <Route path='*' element={<NotFound/>}></Route>
+<Route path='/cart' element={<Cart/>}></Route>
+
   </Routes>
 </Router>
     </QueryClientProvider>

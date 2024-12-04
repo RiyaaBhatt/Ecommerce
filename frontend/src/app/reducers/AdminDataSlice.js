@@ -4,7 +4,8 @@ const initialState = {
 length:{
     length:"",
     userCount:0,
-    adminCount:0
+    adminCount:0,
+    data:{}
 }
 }
 export const adminDataSlice = createSlice({

@@ -2,10 +2,17 @@ import React from 'react'
 import AdminSidebar from '../pages/AdminSidebar'
 import { PieChart, BarChart, Pie, Bar, XAxis, YAxis, Tooltip, Legend, Cell } from 'recharts';
 import { useSelector } from 'react-redux';
+import Scrollable from './Scrollable';
 
 export default function DashboardA() {
   const pieChartData=useSelector((state)=>state.admin.length)
 const BarChartData=useSelector((state)=>state.order.order)
+const UserData=useSelector((state)=>state.admin.length.filterData)
+console.log("__________________________");
+console.log(pieChartData);
+console.log("______________________________");
+
+
 console.log(BarChartData);
 const newBarChartData = [
   { name: 'Delivered', value: BarChartData.delivered },
@@ -22,11 +29,11 @@ const d1=['Delivered','Out for Delivery','Shipped','Ordered','Cancelled']
     { name: 'Admin', value: pieChartData.adminCount,fill:"#4F75FF"},
     { name: 'User', value: pieChartData.userCount,fill:"#00CCDD" }
   ];  return (
-    <>   
+    <div>   
      <AdminSidebar/>
-    <div className='flex'>
+    <div className='flex overflow-scroll scroll-thin scrollbar-thumb-black scrollbar-track-black-500'>
   
-      <div className="ml-[250px] mt-[100px] p-[20px] flex-1">
+      <div className="ml-[250px] mt-[100px] p-[20px] flex-1 absolute left-24 z-[-100]" >
       <h1 className='text-3xl'>  User Distribution Chart</h1>
 <PieChart width={400} height={400}>
                             <Pie 
@@ -70,7 +77,7 @@ const d1=['Delivered','Out for Delivery','Shipped','Ordered','Cancelled']
   </div>
   
 
-  <div className='pt-[100px] pr-[120px]'>
+  <div className='pt-[100px] pr-[120px] absolute right-40 z-[-100]'>
   <BarChart width={400} height={400} data={newBarChartData} barSize={40} >
                             <XAxis dataKey="name"/>
                             <YAxis allowDecimals={false}/>
@@ -79,6 +86,10 @@ const d1=['Delivered','Out for Delivery','Shipped','Ordered','Cancelled']
                             <Bar dataKey="value" fill="#6A1B9A" />
                         </BarChart>
   </div>
-    </div></>
+  
+    </div>
+
+    {/* <Scrollable title="Order" data={UserData}/> */}
+    </div>
   )
 }

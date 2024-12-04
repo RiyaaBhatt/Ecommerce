@@ -52,8 +52,10 @@ export default function User() {
               console.log(userCount,"this is me user count");
               const totalCount=adminCount+userCount
               console.log(adminCount,"this is me user count");
-
-              dispatch(getUserLength({totalCount,adminCount,userCount}))
+              console.log(response.data);
+              
+                
+              dispatch(getUserLength({totalCount,adminCount,userCount,filterData}))
               
                 setLoading(false)
             })

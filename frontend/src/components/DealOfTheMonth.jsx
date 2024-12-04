@@ -155,12 +155,15 @@ import m1 from '../assets/images/m1.png'
 import m2 from '../assets/images/m2.png'
 import m3 from '../assets/images/m3.png'
 import m4 from '../assets/images/m4.png'
+import { useNavigate } from "react-router-dom";
 export default function DealOfTheMonth() {
   const initialImages = [img, img1, img2, img3];
   const [images, setImages] = useState(initialImages);
-
+const navigate=useNavigate()
   const countdownDate = useRef(Date.now() + 500000000);
-
+ function handleAll(){
+  navigate("/viewallproduct")
+ }
   useEffect(() => {
     const interval = setInterval(() => {
       setImages((prevImages) => [...prevImages].sort(() => Math.random() - 0.5));
@@ -181,7 +184,7 @@ export default function DealOfTheMonth() {
       <div className="relative right-[380px] font-normal py-2">
         <Countdown date={countdownDate.current} renderer={Counter} />
       </div>
-      <button className="bg-black rounded-md text-white  my-5 py-3 px-6 flex right-1.5 relative cursor-pointer relative left-[190px]">
+      <button className="bg-black rounded-md text-white  my-5 py-3 px-6 flex right-1.5 relative cursor-pointer relative left-[190px]" onClick={handleAll}>
         View All Product <img src={right} alt="" className="h-3  rounded-md mx-1 my-1.5 " />
       </button>
 
