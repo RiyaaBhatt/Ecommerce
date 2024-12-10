@@ -26,4 +26,5 @@
 
 # Design Inspiration
 https://www.figma.com/design/nFVBzY1RlCV6mVkfj8CDOG/Shopping-Ecommerce-Website-UI-Kit---UI8-(Community)?node-id=3225-5596&node-type=frame&t=R6tFx7nfLVpBjRqx-0
+<br/>
 https://dribbble.com/shots/22970283-Student-Dashboard-UI
