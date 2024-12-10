@@ -23,3 +23,7 @@
 ![image](https://github.com/user-attachments/assets/a7d061e6-c34b-4aab-8164-88d819b93686)
 ![image](https://github.com/user-attachments/assets/1cf414f3-2c71-47e7-a9d7-fdfd96bb6934)
 ![image](https://github.com/user-attachments/assets/2ded70ea-1c0e-45b0-8691-9beda7227b37)
+
+# Design Inspiration
+https://www.figma.com/design/nFVBzY1RlCV6mVkfj8CDOG/Shopping-Ecommerce-Website-UI-Kit---UI8-(Community)?node-id=3225-5596&node-type=frame&t=R6tFx7nfLVpBjRqx-0
+https://dribbble.com/shots/22970283-Student-Dashboard-UI
